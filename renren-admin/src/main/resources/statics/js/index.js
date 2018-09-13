@@ -26,7 +26,7 @@ var menuItem = Vue.extend({
 //iframe自适应
 $(window).on('resize', function() {
 	var $content = $('.content');
-	$content.height($(this).height() - 85);
+	$content.height($(this).height() - 120);
 	$content.find('iframe').each(function() {
 		$(this).height($content.height());
 	});
@@ -131,32 +131,4 @@ function routerList(router, menuList){
 			});
 		}
 	}
-}
-
-function layerOpen(obj) {
-	layer.open({
-		type : obj.type || 2,
-		title : obj.title,
-		scrollbar : obj.scrollbar || false,
-		closeBtn : obj.closeBtn, // 关闭按钮是否显示
-		shade : obj.shade || 0.3,
-		shadeClose : obj.shadeClose || true,
-		skin : obj.skin || 'layui-layer-demo', // 加上边框,
-		area : obj.area || [ '600px', '400px' ],
-		content : obj.content,
-		btn : obj.btn,
-		yes : function(index, layero) {
-			if (obj.btn1Callback) {
-				obj.btn1Callback()
-			}
-			// 按钮【按钮一】的回调
-		},
-		btn2 : function(index, layero) {
-			if (obj.btn2Callback) {
-				obj.btn2Callback()
-			}
-			// 按钮【按钮二】的回调
-			//return false 开启该代码可禁止点击该按钮关闭
-		}
-	})
 }
