@@ -52,3 +52,12 @@ tbody > tr > th {font-weight: normal; }
 .form-horizontal{
 	width:550px;padding-top:20px;
 }
+
+/*首页的包含IFRAMEDIV样式*/
+.content-wrapper .ifrmae_content{
+	background:#fff;
+    min-height: 250px;
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+}

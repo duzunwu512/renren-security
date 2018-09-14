@@ -17,12 +17,14 @@
 			<#if shiro.hasPermission("sys:goods:delete")>
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			</#if>
+            <a class="btn btn-primary" @click="testBtn"><i class="fa fa-trash-o"></i>&nbsp;测试</a>
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
     </div>
 
-    <div v-show="!showList" class="panel panel-default">
+</div>
+    <div style="display: none;" class="panel panel-default" id="add_div">
         <div class="panel-heading">{{title}}</div>
         <form class="form-horizontal">
 														                    <div class="form-group">
@@ -56,7 +58,6 @@
             </div>
         </form>
     </div>
-</div>
 
 <script src="${request.contextPath}/statics/js/modules/sys/goods.js?_${.now?long}"></script>
 </body>

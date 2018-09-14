@@ -115,6 +115,15 @@ var vm = new Vue({
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
             }).trigger("reloadGrid");
+		},
+		testBtn: function(event){
+			parent.layerOpen({title:"测试窗口",
+				btn: ['修改','取消'],
+				btn1Callback:function(){console.log("but10")}, 
+				btn2Callback:function(){console.log("but2...");}
+				,content:'www.baidu.com'
+				,type:2
+			});
 		}
 	}
 });
