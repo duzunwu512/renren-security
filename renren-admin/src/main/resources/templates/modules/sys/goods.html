@@ -17,7 +17,7 @@
 			<#if shiro.hasPermission("sys:goods:delete")>
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			</#if>
-            <a class="btn btn-primary" @click="testBtn"><i class="fa fa-trash-o"></i>&nbsp;测试</a>
+            <a class="btn btn-primary" @click="testBtn"><i class="fa fa-trash-o"></i>&nbsp;测试--</a>
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
@@ -57,6 +57,9 @@
                 &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
             </div>
         </form>
+    </div>
+    <div id="test_div" style="display: none;">
+    	<p>ddddddddddddddddddd</p>
     </div>
 
 <script src="${request.contextPath}/statics/js/modules/sys/goods.js?_${.now?long}"></script>

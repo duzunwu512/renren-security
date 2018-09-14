@@ -160,3 +160,7 @@ function layerOpen(obj) {
 		}
 	})
 }
+
+function modelOpen(obj) {
+	
+}

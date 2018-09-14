@@ -117,12 +117,13 @@ var vm = new Vue({
             }).trigger("reloadGrid");
 		},
 		testBtn: function(event){
+			//https://blog.csdn.net/zhangxiaoyang0/article/details/78045403
 			parent.layerOpen({title:"测试窗口",
 				btn: ['修改','取消'],
 				btn1Callback:function(){console.log("but10")}, 
 				btn2Callback:function(){console.log("but2...");}
-				,content:'www.baidu.com'
-				,type:2
+				,content:$("#test_div").html()
+				,type:1
 			});
 		}
 	}
