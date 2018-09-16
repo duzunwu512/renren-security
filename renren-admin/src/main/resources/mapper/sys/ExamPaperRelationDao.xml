@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.exam.dao.ExamPaperRelationDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.exam.entity.ExamPaperRelationEntity" id="examPaperRelationMap">
+        <result property="id" column="id"/>
+        <result property="paperId" column="paper_id"/>
+        <result property="typeId" column="type_id"/>
+        <result property="scroe" column="scroe"/>
+        <result property="duration" column="duration"/>
+        <result property="descr" column="descr"/>
+        <result property="del" column="del"/>
+        <result property="dcreateBy" column="dcreate_by"/>
+        <result property="dcreateDate" column="dcreate_date"/>
+        <result property="dupdateBy" column="dupdate_by"/>
+        <result property="updateDate" column="update_date"/>
+    </resultMap>
+
+
+</mapper>

@@ -23,44 +23,48 @@
         <div id="jqGridPager"></div>
     </div>
 
+<div id="test_div" style="display: none;">
+<p>--{{title}}--</p>
+    <input type="text" class="form-control" v-model="goods.name" placeholder="商品名"/>
+    <input type="text" class="form-control" v-model="goods.intro" placeholder="介绍"/>
 </div>
-    <div style="display: none;" class="panel panel-default" id="add_div">
-        <div class="panel-heading">{{title}}</div>
+
+    <div v-show="!showList" class="panel panel-default" id="add_div">
+        <div class="panel-heading">--{{title}}--</div>
         <form class="form-horizontal">
-														                    <div class="form-group">
-                        <div class="col-sm-2 control-label">商品名</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="goods.name" placeholder="商品名"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">介绍</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="goods.intro" placeholder="介绍"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">价格</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="goods.price" placeholder="价格"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">数量</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="goods.num" placeholder="数量"/>
-                        </div>
-                    </div>
-							            <div class="form-group">
+            <div class="form-group">
+                <div class="col-sm-2 control-label">商品名</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="goods.name" placeholder="商品名"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">介绍</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="goods.intro" placeholder="介绍"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">价格</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="goods.price" placeholder="价格"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">数量</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="goods.num" placeholder="数量"/>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-sm-2 control-label"></div>
                 <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
                 &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
             </div>
         </form>
     </div>
-    <div id="test_div" style="display: none;">
-    	<p>ddddddddddddddddddd</p>
-    </div>
+</div>
+
 
 <script src="${request.contextPath}/statics/js/modules/sys/goods.js?_${.now?long}"></script>
 </body>

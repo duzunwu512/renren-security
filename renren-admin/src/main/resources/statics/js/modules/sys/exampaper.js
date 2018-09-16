@@ -1,13 +1,16 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: baseURL + 'sys/goods/list',
+        url: baseURL + 'sys/exampaper/list',
         datatype: "json",
         colModel: [			
-			{ label: 'goodsId', name: 'goodsId', index: 'goods_id', width: 50, key: true },
-			{ label: '商品名', name: 'name', index: 'name', width: 80 }, 			
-			{ label: '介绍', name: 'intro', index: 'intro', width: 80 }, 			
-			{ label: '价格', name: 'price', index: 'price', width: 80 }, 			
-			{ label: '数量', name: 'num', index: 'num', width: 80 }			
+			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
+			{ label: '区域名称', name: 'areaId', index: 'area_id', width: 80 },
+			{ label: '种类名称', name: 'catalogId', index: 'catalog_id', width: 80 },
+			{ label: '试卷名称', name: 'name', index: 'name', width: 80 }, 			
+			{ label: '时长', name: 'duration', index: 'duration', width: 80 }, 			
+			{ label: '分值', name: 'score', index: 'score', width: 80 }, 			
+			{ label: '考试类型', name: 'closed', index: 'closed', width: 80 },
+			{ label: '描述', name: 'descr', index: 'descr', width: 80 }
         ],
 		viewrecords: true,
         height: 385,
@@ -41,7 +44,7 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		goods: {}
+		examPaper: {}
 	},
 	methods: {
 		query: function () {
@@ -50,25 +53,25 @@ var vm = new Vue({
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
-			vm.goods = {};
+			vm.examPaper = {};
 		},
 		update: function (event) {
-			var goodsId = getSelectedRow();
-			if(goodsId == null){
+			var id = getSelectedRow();
+			if(id == null){
 				return ;
 			}
 			vm.showList = false;
             vm.title = "修改";
             
-            vm.getInfo(goodsId)
+            vm.getInfo(id)
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.goods.goodsId == null ? "sys/goods/save" : "sys/goods/update";
+			var url = vm.examPaper.id == null ? "sys/exampaper/save" : "sys/exampaper/update";
 			$.ajax({
 				type: "POST",
 			    url: baseURL + url,
                 contentType: "application/json",
-			    data: JSON.stringify(vm.goods),
+			    data: JSON.stringify(vm.examPaper),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -81,17 +84,17 @@ var vm = new Vue({
 			});
 		},
 		del: function (event) {
-			var goodsIds = getSelectedRows();
-			if(goodsIds == null){
+			var ids = getSelectedRows();
+			if(ids == null){
 				return ;
 			}
 			
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: baseURL + "sys/goods/delete",
+				    url: baseURL + "sys/exampaper/delete",
                     contentType: "application/json",
-				    data: JSON.stringify(goodsIds),
+				    data: JSON.stringify(ids),
 				    success: function(r){
 						if(r.code == 0){
 							alert('操作成功', function(index){
@@ -104,9 +107,9 @@ var vm = new Vue({
 				});
 			});
 		},
-		getInfo: function(goodsId){
-			$.get(baseURL + "sys/goods/info/"+goodsId, function(r){
-                vm.goods = r.goods;
+		getInfo: function(id){
+			$.get(baseURL + "sys/exampaper/info/"+id, function(r){
+                vm.examPaper = r.examPaper;
             });
 		},
 		reload: function (event) {
@@ -116,27 +119,16 @@ var vm = new Vue({
                 page:page
             }).trigger("reloadGrid");
 		},
-		testBtn: function(event){
-			console.log("testBtn...:"+vm.title);
-            vm.title = "测试~~~";
-            console.log("testBtn after...:"+vm.title);
-            //vm.showList = false;
-			//https://blog.csdn.net/zhangxiaoyang0/article/details/78045403
-
-            var goodsId = getSelectedRow();
-            if(goodsId == null){
-                return ;
-            }
-            vm.getInfo(goodsId)
-            vm.showList = false;
-console.log("00000::::"+$("#add_div").html());
-			parent.layerOpen({title:vm.title,
-				btn: ['修改','取消'],
-				btn1Callback:function(){console.log("but10")}, 
-				btn2Callback:function(){console.log("but2...");}
-				,content:$("#add_div").html()
-				,type:1
-			});
-		}
+		addPaper: function(event){
+            parent.layerOpen({title:'新增试卷',
+                btn: ['保存','取消'],
+                closeBtn:1,
+                btn1Callback:function(){console.log("but10")},
+                btn2Callback:function(){console.log("but2...");}
+                ,content:"modules/sys/exam_new_paper.html"
+                ,area:['1024px','650px']
+                ,type:2
+            });
+        }
 	}
 });

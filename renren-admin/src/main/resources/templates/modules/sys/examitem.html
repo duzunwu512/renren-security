@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>考题表</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:examitem:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:examitem:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:examitem:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">种类ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.catalogId" placeholder="种类ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">区域ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.areaId" placeholder="区域ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">试券ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.paperId" placeholder="试券ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">类型ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.typeId" placeholder="类型ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">考题类型 ，枚举，选择题，填写...</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.questionType" placeholder="考题类型 ，枚举，选择题，填写..."/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">分值</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.score" placeholder="分值"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">内容，此内容为后台管理添加</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.question" placeholder="内容，此内容为后台管理添加"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">内容，此内容为后台管理添加</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.selections" placeholder="内容，此内容为后台管理添加"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">内容，此内容为后台管理添加</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.answer" placeholder="内容，此内容为后台管理添加"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否删除  1：已删除  0：正常</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.del" placeholder="是否删除  1：已删除  0：正常"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.dcreateBy" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.dcreateDate" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.dupdateBy" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="examItem.updateDate" placeholder=""/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/examitem.js?_${.now?long}"></script>
+</body>
+</html>

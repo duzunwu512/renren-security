@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.exam.dao.ExamItemLogDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.exam.entity.ExamItemLogEntity" id="examItemLogMap">
+        <result property="id" column="id"/>
+        <result property="itemId" column="item_id"/>
+        <result property="itemOld" column="item_old"/>
+        <result property="itemNew" column="item_new"/>
+        <result property="del" column="del"/>
+        <result property="dcreateBy" column="dcreate_by"/>
+        <result property="dcreateDate" column="dcreate_date"/>
+        <result property="dupdateBy" column="dupdate_by"/>
+        <result property="updateDate" column="update_date"/>
+    </resultMap>
+
+
+</mapper>
